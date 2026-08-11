@@ -1,0 +1,597 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Information</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
+
+</head>
+
+<head>
+    <title>School Management System</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+
+
+
+<style>
+  /* =========================================
+   GLOBAL
+========================================= */
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    background: #f4f7fb;
+    font-family: "Segoe UI", Arial, sans-serif;
+    color: #1e293b;
+}
+
+
+/* =========================================
+   NAVBAR
+========================================= */
+
+.navbar {
+    background: linear-gradient(135deg, #0f172a, #1e3a8a) !important;
+    padding: 16px 0;
+    box-shadow: 0 5px 20px rgba(15, 23, 42, 0.18);
+}
+
+.navbar .container {
+    max-width: 1250px;
+}
+
+.navbar-brand {
+    color: #ffffff !important;
+    font-size: 22px;
+    letter-spacing: 0.3px;
+    transition: 0.3s ease;
+}
+
+.navbar-brand:hover {
+    opacity: 0.9;
+}
+
+.navbar .btn {
+    border-radius: 8px;
+    padding: 8px 15px;
+    font-size: 14px;
+    font-weight: 500;
+    transition: all 0.25s ease;
+}
+
+.navbar .btn:hover {
+    background: #ffffff;
+    color: #1e3a8a;
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.15);
+}
+
+
+/* =========================================
+   PAGE HEADING
+========================================= */
+
+h3 {
+    text-align: center;
+    margin: 40px 0 30px;
+    color: #0f172a;
+    font-size: 29px;
+    font-weight: 700;
+}
+
+h3::after {
+    content: "";
+    display: block;
+    width: 55px;
+    height: 4px;
+    margin: 10px auto 0;
+    border-radius: 10px;
+    background: linear-gradient(90deg, #2563eb, #7c3aed);
+}
+
+
+/* =========================================
+   FORM CARD
+========================================= */
+
+form {
+    width: 90%;
+    max-width: 850px;
+    margin: 0 auto 50px;
+
+    padding: 32px;
+
+    background: #ffffff;
+
+    border: 1px solid #e5eaf0;
+    border-radius: 16px;
+
+    box-shadow: 0 10px 35px rgba(15, 23, 42, 0.08);
+}
+
+
+/* =========================================
+   FORM INPUTS
+========================================= */
+
+form .form-control {
+    height: 46px;
+
+    border: 1px solid #d9e0e8;
+    border-radius: 8px;
+
+    background: #f8fafc;
+
+    padding: 10px 13px;
+
+    font-size: 14px;
+
+    transition: all 0.25s ease;
+}
+
+form .form-control:hover {
+    border-color: #93c5fd;
+    background: #ffffff;
+}
+
+form .form-control:focus {
+    border-color: #2563eb;
+    background: #ffffff;
+
+    box-shadow: 0 0 0 4px rgba(37, 99, 235, 0.10);
+
+    outline: none;
+}
+
+
+/* =========================================
+   FORM LABELS
+========================================= */
+
+form label {
+    color: #334155;
+    font-size: 14px;
+    font-weight: 600;
+    margin-bottom: 7px;
+}
+
+
+/* =========================================
+   GENDER SELECT
+========================================= */
+
+#gender {
+    width: 100%;
+    height: 46px;
+
+    border: 1px solid #d9e0e8;
+    border-radius: 8px;
+
+    background: #f8fafc;
+
+    padding: 0 13px;
+
+    color: #475569;
+
+    cursor: pointer;
+
+    transition: all 0.25s ease;
+}
+
+#gender:hover {
+    border-color: #93c5fd;
+    background: #ffffff;
+}
+
+#gender:focus {
+    outline: none;
+
+    background: #ffffff;
+
+    border-color: #2563eb;
+
+    box-shadow: 0 0 0 4px rgba(37, 99, 235, 0.10);
+}
+
+
+/* =========================================
+   SUBMIT / UPDATE BUTTON
+========================================= */
+
+form .btn-primary {
+    width: 100%;
+    height: 46px;
+
+    margin-top: 8px;
+
+    border: none;
+    border-radius: 8px;
+
+    background: linear-gradient(135deg, #2563eb, #4f46e5);
+
+    font-size: 14px;
+    font-weight: 600;
+
+    box-shadow: 0 5px 15px rgba(37, 99, 235, 0.20);
+
+    transition: all 0.25s ease;
+}
+
+form .btn-primary:hover {
+    background: linear-gradient(135deg, #1d4ed8, #4338ca);
+
+    transform: translateY(-2px);
+
+    box-shadow: 0 8px 20px rgba(37, 99, 235, 0.28);
+}
+
+
+/* =========================================
+   TABLE
+========================================= */
+
+.table {
+    width: 94%;
+    margin: 0 auto 60px;
+
+    background: #ffffff;
+
+    border-radius: 14px;
+    overflow: hidden;
+
+    border: 1px solid #e2e8f0;
+
+    box-shadow: 0 10px 30px rgba(15, 23, 42, 0.08);
+
+    border-collapse: separate;
+    border-spacing: 0;
+}
+
+
+/* =========================================
+   TABLE HEADER
+========================================= */
+
+.table thead {
+    background: linear-gradient(135deg, #0f172a, #1e3a8a);
+    color: white;
+}
+
+.table thead th {
+    padding: 16px 14px;
+
+    border: none;
+
+    font-size: 12px;
+    font-weight: 600;
+
+    text-transform: uppercase;
+
+    letter-spacing: 0.5px;
+
+    white-space: nowrap;
+}
+
+
+/* =========================================
+   TABLE BODY
+========================================= */
+
+.table tbody td,
+.table tbody th {
+    padding: 14px;
+
+    vertical-align: middle;
+
+    border-bottom: 1px solid #edf1f5;
+
+    font-size: 14px;
+
+    color: #475569;
+
+    white-space: nowrap;
+}
+
+
+/* Number column */
+
+.table tbody th {
+    color: #2563eb;
+    font-weight: 600;
+}
+
+
+/* =========================================
+   TABLE ROW HOVER
+========================================= */
+
+.table tbody tr {
+    background: #ffffff;
+    transition: all 0.2s ease;
+}
+
+.table tbody tr:hover {
+    background: #f8faff;
+}
+
+
+/* Remove border from final row */
+
+.table tbody tr:last-child td,
+.table tbody tr:last-child th {
+    border-bottom: none;
+}
+
+
+/* =========================================
+   EDIT BUTTON
+========================================= */
+
+.table .btn-warning {
+    border: none;
+
+    background: #f59e0b;
+    color: white;
+
+    border-radius: 6px;
+
+    padding: 6px 13px;
+
+    font-size: 12px;
+    font-weight: 600;
+
+    transition: all 0.2s ease;
+}
+
+.table .btn-warning:hover {
+    background: #d97706;
+    color: white;
+
+    transform: translateY(-2px);
+
+    box-shadow: 0 5px 12px rgba(245, 158, 11, 0.25);
+}
+
+
+/* =========================================
+   DELETE BUTTON
+========================================= */
+
+.table .btn-danger {
+    border: none;
+
+    background: #ef4444;
+    color: white;
+
+    border-radius: 6px;
+
+    padding: 6px 13px;
+
+    font-size: 12px;
+    font-weight: 600;
+
+    transition: all 0.2s ease;
+}
+
+.table .btn-danger:hover {
+    background: #dc2626;
+
+    transform: translateY(-2px);
+
+    box-shadow: 0 5px 12px rgba(239, 68, 68, 0.25);
+}
+
+
+/* =========================================
+   ACTION COLUMN
+========================================= */
+
+.table td:last-child {
+    min-width: 150px;
+}
+/* Keep address inside its table column */
+.table td:nth-child(7) {
+    max-width: 250px;
+    white-space: normal;
+    overflow-wrap: anywhere;
+    word-break: break-word;
+}
+thead{
+  background: blue;
+}
+
+
+/* =========================================
+   RESPONSIVE
+========================================= */
+
+@media (max-width: 768px) {
+
+    .navbar .container {
+        flex-direction: column;
+        gap: 15px;
+    }
+
+    .navbar-brand {
+        font-size: 20px;
+    }
+
+    .navbar .btn {
+        padding: 7px 10px;
+        font-size: 12px;
+    }
+
+    form {
+        width: 94%;
+        padding: 24px 20px;
+    }
+
+    h3 {
+        font-size: 24px;
+        margin-top: 30px;
+    }
+
+    .table {
+        width: 94%;
+        display: block;
+        overflow-x: auto;
+        white-space: nowrap;
+        table-layout: fixed;
+    }
+  
+}
+
+</style>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<nav class="navbar navbar-dark bg-dark">
+    <div class="container">
+
+        <a class="navbar-brand fw-bold" href="#">
+            School Management System
+        </a>
+
+        <div>
+            {% if is_principal %}
+                <a href="{% url 'teacher' %}" class="btn btn-outline-light me-2">
+                Teachers
+                </a>
+            {% endif %}
+
+
+            {% if is_principal or is_teacher %}
+                <a href="{% url 'student' %}" class="btn btn-outline-light me-2">
+                    Students
+                </a>
+            {% endif %}
+
+
+            {% if is_principal or is_teacher or is_student %}
+                <a href="{% url 'studentsrecord' %}"  class="btn btn-outline-light me-2">
+                    Students Records
+                </a>
+            {% endif %}
+        </div>
+
+    </div>
+</nav>
+
+<body>
+    <h3>Student Information</h3>
+
+
+    <form method="post"> 
+      {% csrf_token %}
+    
+  <div class="mb-3">
+    <label for="firstname" class="form-label">Student's First Name</label>
+    <input type="text" class="form-control" placeholder="First Name Here" name="first_name" 
+    value="{{ edit_student.first_name|default:'' }}" required>
+  <div class="mb-3">
+    <label for="lastname" class="form-label">Student's Last Name</label>
+    <input type="text" class="form-control" placeholder="Last name Here" name="last_name"
+    value="{{ edit_student.last_name|default:'' }}" required>
+  </div>
+
+<label for="gender">Gender:</label>
+
+<select id="gender" name="gender" value="{{ teachers.gender|default:'' }}">
+    <option value="">Select Gender</option>
+    <option value="Male"{% if edit_student.gender == "Male" %}selected{% endif %}>Male</option>
+    <option value="Female"{% if edit_student.gender == "Female" %}selected{% endif %}>Female</option>
+    <option value="Other"{% if edit_student.gender == "Other" %}selected{% endif %}>Other</option>
+</select>
+<!-- <h3>Contact Information</h3> -->
+
+  <div class="mb-3">
+    <label for="phone" class="form-label">Phone Number</label>
+    <input type="number" class="form-control" placeholder="Phone Number" name="phone_number" 
+    value="{{ edit_student.phone_number|default:'' }}" required>
+  </div>
+  <div class="mb-3">
+    <label for="email" class="form-label">Email</label>
+    <input type="email" class="form-control" placeholder="Email Address" name="email" 
+    value="{{ edit_student.email|default:'' }}" required>
+  </div>
+  <div class="mb-3">
+    <label for="address" class="form-label">Address</label>
+    <input type="text" class="form-control" placeholder="Address" name="address" 
+    value="{{ edit_student.address|default:'' }}" required>
+  </div>
+  
+  <button type="submit" class="btn btn-primary">    
+    {% if student %}Update{% else %}Submit{% endif %}</button>
+</form>
+</div>
+
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">First Name</th>
+      <th scope="col">Last Name</th>
+      <th scope="col">Gender</th>
+      <th scope="col">Phone Number </th>
+      <th scope="col">Email</th>
+      <th scope="col">Address</th>
+      <th scope="col">Action</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for a in students %}
+    <tr>
+      <th scope="row">{{ forloop.counter }}</th>
+      <td>{{a.first_name}}</td>
+      <td>{{a.last_name}}</td>
+      <td>{{a.gender}}</td>
+      <td>{{a.phone_number}}</td>
+      <td>{{a.email}}</td>
+      <td>{{a.address}}</td>
+
+
+      <td>
+                <a href="{% url 'edit_student' a.id %}" class="btn btn-warning btn-sm">
+                    Edit
+                </a>
+
+                <a href="{% url 'delete_student' a.id %}" class="btn btn-danger btn-sm">
+                    Delete
+                </a>
+            </td>
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>
+
+
+
+</body>
+</html>

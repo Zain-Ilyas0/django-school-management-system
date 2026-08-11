@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+    <style>
+        body{
+            background:#ffffff;
+            height:100vh;
+            display:flex;
+            justify-content:center;
+            align-items:center;
+            font-family:Arial, Helvetica, sans-serif;
+        }
+
+        .login-box{
+            width:400px;
+            padding:35px;
+            border:1px solid #e5e5e5;
+            border-radius:15px;
+            box-shadow:0 5px 20px rgba(0,0,0,0.08);
+        }
+
+        h3{
+            color: white;
+            text-align:center;
+            margin-bottom:25px;
+            font-weight:bold;
+        }
+
+        .form-control{
+            height:48px;
+            border-radius:8px;
+            margin-bottom:15px;
+        }
+
+        .btn{
+            height:48px;
+            border-radius:8px;
+            font-size:17px;
+            font-weight:600;
+        }
+
+        .register-text{
+            text-align:center;
+            margin-top:18px;
+        }
+
+        .register-text a{
+            text-decoration:none;
+            font-weight:600;
+        }
+
+        .all{
+            display: flex;
+            flex-direction: column;
+            gap: 15px; /* Space between inputs */
+            width: 310px;
+            background: linear-gradient(135deg, #0f172a, #1e3a8a) !important;
+            padding: 30px;
+        }
+        
+    </style>
+    
+    <form method="POST">
+
+    {% csrf_token %}
+
+    {% if messages %}
+        {% for message in messages %}
+            <div class="alert alert-danger">
+                {{ message }}
+            </div>
+        {% endfor %}
+    {% endif %}
+<div class="all">
+
+   
+    <h3>Log In to Your Account</h3>
+    <input
+        type="text"
+        class="form-control mb-3"
+        placeholder="Username"
+        name="username"
+        autocomplete="off">
+
+    <input
+        type="password"
+        class="form-control mb-3"
+        placeholder="Password"
+        name="password"
+        autocomplete="new-password">
+
+    <button class="btn btn-primary w-100">
+        Login
+    </button>
+    </div>
+
+</form>
+</body>
+</html>

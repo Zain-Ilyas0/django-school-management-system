@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css" rel="stylesheet">
+
+</head>
+<body>
+
+    <style>
+        body{
+            background:#ffffff;
+            height:100vh;
+            display:flex;
+            justify-content:center;
+            align-items:center;
+            font-family:Arial, Helvetica, sans-serif;
+        }
+
+        .register-box{
+            width:420px;
+            padding:35px;
+            border-radius:15px;
+            border:1px solid #e5e5e5;
+            box-shadow:0 5px 20px rgba(0,0,0,0.08);
+        }
+
+        h2{
+            color: white;
+            text-align:center;
+            margin-bottom:25px;
+            font-weight:bold;
+        }
+
+        .form-control{
+            height:48px;
+            border-radius:8px;
+        }
+
+        .btn-register{
+            height:48px;
+            border-radius:8px;
+            font-size:17px;
+            font-weight:600;
+        }
+
+        .login-text{
+            text-align:center;
+            margin-top:18px;
+        }
+
+        .login-text a{
+            text-decoration:none;
+            font-weight:600;
+        }
+        .all {
+            display: flex;
+            flex-direction: column;
+            gap: 15px; /* Space between inputs */
+            width: 300px;
+            background: linear-gradient(135deg, #0f172a, #1e3a8a) !important;
+            padding: 30px;
+        }
+    </style>
+    
+
+<div class="all">
+
+    <h2>Create Account</h2>
+
+    {% if error %}
+        <div class="alert alert-danger">
+            {{ error }}
+        </div>
+    {% endif %}
+
+    <form method="POST">
+
+        {% csrf_token %}
+
+        <input 
+            type="text"
+            name="username"
+            class="form-control"
+            placeholder="Username"
+            autocomplete="off"
+            required
+        >
+
+        <input
+            type="password"
+            name="password"
+            class="form-control"
+            placeholder="Password"
+            autocomplete="new-password"
+            required
+        >
+
+        <button
+            type="submit"
+            class="btn btn-primary btn-register"
+        >
+            Register
+        </button>
+
+    </form>
+
+    <div class="login-text">
+        Already have an account?
+        <a href="{% url 'login' %}">
+            Login
+        </a>
+    </div>
+
+</div>
+
+
+
+
+
+
+
+
+
+
+
+{% comment %} <form method="POST">
+
+{% csrf_token %}
+<div class="all">
+    <h2>Register Your Account Here</h2>
+<input type="text" name="username" placeholder="Username" class="form-control mb-3" autocomplete="off">
+
+<input type="email" name="email" placeholder="Email" class="form-control mb-3">
+
+<input type="password" name="password" placeholder="Password" class="form-control mb-3" autocomplete="new-password">
+
+<!-- <input type="password" name="password2" placeholder="Confirm Password" class="form-control mb-3"> -->
+
+<button class="btn btn-success w-100 mb-4">
+Register
+</button>
+</div>
+
+</form> {% endcomment %}
+</body>
+</html>

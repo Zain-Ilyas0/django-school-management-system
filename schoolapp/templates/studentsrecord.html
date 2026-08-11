@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Students Records</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
+
+</head>
+<head>
+    <title>School Management System</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+
+
+<style>
+    
+
+
+.navbar {
+    background: linear-gradient(135deg, #0f172a, #1e3a8a) !important;
+    padding: 16px 0;
+    box-shadow: 0 5px 20px rgba(15, 23, 42, 0.18);
+}
+
+.navbar .container {
+    max-width: 1250px;
+}
+
+.navbar-brand {
+    color: #ffffff !important;
+    font-size: 22px;
+    letter-spacing: 0.3px;
+    transition: 0.3s ease;
+}
+
+.navbar-brand:hover {
+    opacity: 0.9;
+}
+
+.navbar .btn {
+    border-radius: 8px;
+    padding: 8px 15px;
+    font-size: 14px;
+    font-weight: 500;
+    transition: all 0.25s ease;
+}
+
+.navbar .btn:hover {
+    background: #ffffff;
+    color: #1e3a8a;
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.15);
+}
+
+/* =========================================
+   TABLE
+========================================= */
+
+.table {
+    width: 94%;
+    margin: 0 auto 60px;
+
+    background: #ffffff;
+
+    border-radius: 14px;
+    overflow: hidden;
+
+    border: 1px solid #e2e8f0;
+
+    box-shadow: 0 10px 30px rgba(15, 23, 42, 0.08);
+
+    border-collapse: separate;
+    border-spacing: 0;
+}
+
+
+/* =========================================
+   TABLE HEADER
+========================================= */
+
+.table thead {
+    background: linear-gradient(135deg, #0f172a, #1e3a8a);
+    color: white;
+}
+
+.table thead th {
+    padding: 16px 14px;
+
+    border: none;
+
+    font-size: 12px;
+    font-weight: 600;
+
+    text-transform: uppercase;
+
+    letter-spacing: 0.5px;
+
+    white-space: nowrap;
+}
+
+
+/* =========================================
+   TABLE BODY
+========================================= */
+
+.table tbody td,
+.table tbody th {
+    padding: 14px;
+
+    vertical-align: middle;
+
+    border-bottom: 1px solid #edf1f5;
+
+    font-size: 14px;
+
+    color: #475569;
+
+    white-space: nowrap;
+}
+
+
+/* Number column */
+
+.table tbody th {
+    color: #2563eb;
+    font-weight: 600;
+}
+
+
+/* =========================================
+   TABLE ROW HOVER
+========================================= */
+
+.table tbody tr {
+    background: #ffffff;
+    transition: all 0.2s ease;
+}
+
+.table tbody tr:hover {
+    background: #f8faff;
+}
+
+
+/* Remove border from final row */
+
+.table tbody tr:last-child td,
+.table tbody tr:last-child th {
+    border-bottom: none;
+}
+
+
+/* =========================================
+   EDIT BUTTON
+========================================= */
+
+.table .btn-warning {
+    border: none;
+
+    background: #f59e0b;
+    color: white;
+
+    border-radius: 6px;
+
+    padding: 6px 13px;
+
+    font-size: 12px;
+    font-weight: 600;
+
+    transition: all 0.2s ease;
+}
+
+.table .btn-warning:hover {
+    background: #d97706;
+    color: white;
+
+    transform: translateY(-2px);
+
+    box-shadow: 0 5px 12px rgba(245, 158, 11, 0.25);
+}
+
+
+/* =========================================
+   DELETE BUTTON
+========================================= */
+
+.table .btn-danger {
+    border: none;
+
+    background: #ef4444;
+    color: white;
+
+    border-radius: 6px;
+
+    padding: 6px 13px;
+
+    font-size: 12px;
+    font-weight: 600;
+
+    transition: all 0.2s ease;
+}
+
+.table .btn-danger:hover {
+    background: #dc2626;
+
+    transform: translateY(-2px);
+
+    box-shadow: 0 5px 12px rgba(239, 68, 68, 0.25);
+}
+
+
+/* =========================================
+   ACTION COLUMN
+========================================= */
+
+.table td:last-child {
+    min-width: 150px;
+}
+
+</style>
+
+
+<body>
+
+<nav class="navbar navbar-dark bg-dark">
+    <div class="container">
+        <a class="navbar-brand fw-bold" href="#">
+            School Management System
+        </a>
+
+        {% if is_principal %}
+                <a href="{% url 'teacher' %}" class="btn btn-outline-light me-2">
+                Teachers
+                </a>
+            {% endif %}
+
+
+            {% if is_principal or is_teacher %}
+                <a href="{% url 'student' %}" class="btn btn-outline-light me-2">
+                    Students
+                </a>
+            {% endif %}
+
+
+            {% if is_principal or is_teacher or is_student %}
+                <a href="{% url 'studentsrecord' %}"  class="btn btn-outline-light me-2">
+                    Students Records
+                </a>
+            {% endif %}
+        </div>
+
+    </div>
+</nav>
+<body>
+
+    <form method="GET" action="{% url 'studentsrecord' %}" class="mb-4">
+    <div class="input-group">
+        <input
+            type="text"
+            name="search"
+            class="form-control"
+            placeholder="Search anything..."
+            value="{{ query }}"
+        >
+
+        <button type="submit" class="btn btn-primary">
+            Search
+        </button>
+
+        <a href="{% url 'studentsrecord' %}" class="btn btn-secondary">
+            Clear
+        </a>
+    </div>
+</form>
+    
+
+
+
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">First Name</th>
+      <th scope="col">Last Name</th>
+      <th scope="col">Gender</th>
+      <th scope="col">Phone Number </th>
+      <th scope="col">Email</th>
+      <th scope="col">Address</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for a in students %}
+    <tr>
+      <th scope="row">{{ forloop.counter }}</th>
+      <td>{{a.first_name}}</td>
+      <td>{{a.last_name}}</td>
+      <td>{{a.gender}}</td>
+      <td>{{a.phone_number}}</td>
+      <td>{{a.email}}</td>
+      <td>{{a.address}}</td>
+
+
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>School Management System</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+
+
+<style>
+    
+.navbar {
+    background: linear-gradient(135deg, #0f172a, #1e3a8a) !important;
+    padding: 16px 0;
+    box-shadow: 0 5px 20px rgba(15, 23, 42, 0.18);
+}
+
+.navbar .container {
+    max-width: 1250px;
+}
+
+.navbar-brand {
+    color: #ffffff !important;
+    font-size: 22px;
+    letter-spacing: 0.3px;
+    transition: 0.3s ease;
+}
+
+.navbar-brand:hover {
+    opacity: 0.9;
+}
+
+.navbar .btn {
+    border-radius: 8px;
+    padding: 8px 15px;
+    font-size: 14px;
+    font-weight: 500;
+    transition: all 0.25s ease;
+}
+
+.navbar .btn:hover {
+    background: #ffffff;
+    color: #1e3a8a;
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.15);
+}
+
+</style>
+
+<body>
+
+<!-- Header -->
+<nav class="navbar navbar-dark bg-dark">
+    <div class="container">
+
+        <a class="navbar-brand fw-bold" href="#">
+            School Management System
+        </a>
+
+        <div>
+            {% if is_principal %}
+                <a href="{% url 'teacher' %}" class="btn btn-outline-light me-2">
+                Teachers
+                </a>
+            {% endif %}
+
+
+            {% if is_principal or is_teacher %}
+                <a href="{% url 'student' %}" class="btn btn-outline-light me-2">
+                    Students
+                </a>
+            {% endif %}
+
+
+            {% if is_principal or is_teacher or is_student %}
+                <a href="{% url 'studentsrecord' %}"  class="btn btn-outline-light me-2">
+                    Students Records
+                </a>
+            {% endif %}
+        </div>
+
+    </div>
+</nav>
+
+
+<!-- Hero Section -->
+<div class="container mt-5">
+
+    <div class="text-center mb-5">
+
+        <h1 class="fw-bold">
+            Welcome to School Management System
+        </h1>
+
+        <p class="lead mt-3">
+            A simple system designed to manage teachers, students,
+            and their academic records in one place.
+        </p>
+
+        <p class="text-muted">
+            This project helps schools organize important information,
+            maintain accurate records, and make everyday management easier.
+        </p>
+
+    </div>
+
+
+    <!-- Main Features -->
+    <div class="row g-4">
+
+        <!-- Teachers -->
+        <div class="col-md-4">
+
+            <div class="card h-100 shadow-sm">
+
+                <div class="card-body text-center">
+
+                    <h3 class="card-title">
+                        Teachers
+                    </h3>
+
+                    <p class="card-text">
+                        Manage teacher information such as names,
+                        contact details, gender, email addresses,
+                        and other important information.
+                    </p>
+
+                    <a href="{% url 'teacher' %}"
+                       class="btn btn-primary">
+                        Manage Teachers
+                    </a>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- Students -->
+        <div class="col-md-4">
+
+            <div class="card h-100 shadow-sm">
+
+                <div class="card-body text-center">
+
+                    <h3 class="card-title">
+                        Students
+                    </h3>
+
+                    <p class="card-text">
+                        Keep student information organized and easily
+                        accessible. Manage student details and maintain
+                        their records efficiently.
+                    </p>
+
+                    <a href="#"
+                       class="btn btn-success">
+                        Manage Students
+                    </a>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- Student Records -->
+        <div class="col-md-4">
+
+            <div class="card h-100 shadow-sm">
+
+                <div class="card-body text-center">
+
+                    <h3 class="card-title">
+                        Student Records
+                    </h3>
+
+                    <p class="card-text">
+                        Maintain important student records including
+                        academic information, attendance, performance,
+                        and other school-related data.
+                    </p>
+
+                    <a href="#"
+                       class="btn btn-dark">
+                        View Records
+                    </a>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <!-- About Project -->
+    <div class="mt-5 p-5 bg-light rounded">
+
+        <h2 class="text-center mb-3">
+            About This Project
+        </h2>
+
+        <p class="text-center">
+            The main purpose of this School Management System is to
+            provide a simple and organized way to manage school data.
+            Instead of keeping teacher and student information in
+            separate files or manually maintaining records, the system
+            stores and manages the information through a centralized
+            database.
+        </p>
+
+        <p class="text-center mb-0">
+            The project allows administrators to add, view, edit, and
+            delete records, making school data easier to manage and
+            maintain.
+        </p>
+
+    </div>
+
+</div>
+
+
+<!-- Footer -->
+<footer class="bg-dark text-white text-center mt-5 p-3">
+
+    <p class="mb-0">
+        School Management System &copy; 2026
+    </p>
+
+</footer>
+
+</body>
+</html>
